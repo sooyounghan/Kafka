@@ -43,12 +43,10 @@
 
 4. 프로듀서에서 컨슈머로 메세지 전달
    - Offset은 토픽별로 그리고 파티션 별로 별개로 지정하며, 컨슈머가 데이터를 어느 지점까지 읽었는지 확인하는 용도로 사용
-   - 컨슈머가 데이터를 읽기 시작하면 Offset을 Commit하게 되는데, 가져간 내용에 대한 정보는 카프카의 __consumer_offset 토픽에 offset 정보 저장 : 컨슈머를 재실행하면 중지된 시점을 알고 있으므로, 시작 위치부터 다시 복구하여 데이터 처리 가
+   - 컨슈머가 데이터를 읽기 시작하면 Offset을 Commit하게 되는데, 가져간 내용에 대한 정보는 카프카의 __consumer_offset 토픽에 offset 정보 저장 : 컨슈머를 재실행하면 중지된 시점을 알고 있으므로, 시작 위치부터 다시 복구하여 데이터 처리 가능
 <div align="center">
-<img src="">
+<img src="https://github.com/user-attachments/assets/28d64c59-b916-49c1-a6ae-b76ecb924171">
 </div>
-
-<img width="1902" height="637" alt="image" src="https://github.com/user-attachments/assets/28d64c59-b916-49c1-a6ae-b76ecb924171" />
 
    - 컨슈머에 이슈가 발생하더라도 데이터 처리 시점을 복구할 수 있는 고가용성 특징을 가짐
 
