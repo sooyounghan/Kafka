@@ -16,7 +16,7 @@ $ tar xvf zookeeper-3.4.12.tar.gz
     + 추가해야할 Port : 각 Port는 Anywhere기준으로 열도록 함
     + Zookeeper는 2181, 2888, 3888 Port를 사용하므로 3개 포트에 대해 Anywhre 조건으로 Open하며, 카프카 통신을 위해 9092 Port도 열어주는 것이 좋음
 <div align="center">
-<img src="https://github.com/user-attachments/assets/601c766a-5918-46ad-a166-d70b13a77d2">
+<img src="https://github.com/user-attachments/assets/b214a17c-b18f-44cd-970c-7996207c060e2">
 </div>
 
    - 3개의 인스턴스의 이름은 test-broker01, 02, 03로 지정
