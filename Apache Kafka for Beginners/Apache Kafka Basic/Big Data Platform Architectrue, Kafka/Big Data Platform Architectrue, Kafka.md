@@ -12,7 +12,7 @@
      + 거버넌스(Governance) : 빅데이터에 대한 체계적 관리와 통제를 의미 (예) 프라이버시, 품질, 데이터 생명주기 등을 의미)
 
 2. 이러한 단점을 해결하고자 나온 것 : 람다 아키텍쳐(Lambda Architecture)
-   - 3가지 레이어로 구성 : 배치 레이어, 서빙 레이어, 스피드 레이
+   - 3가지 레이어로 구성 : 배치 레이어, 서빙 레이어, 스피드 레이어
 <div align="center">
 <img src="https://github.com/user-attachments/assets/5717556e-614f-4414-beff-4c1868a3057a">
 </div>
