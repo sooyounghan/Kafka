@@ -32,7 +32,7 @@
    - 액티브 세그먼트가 아닌 세그먼트는 retention 옵션에 따라 삭제 대상으로 지정
 
 4. 세그먼트와 삭제 주기 (cleanup.policy=delete)
-   - retetion.ms(minuts, hours) : 세그먼트를 보유할 최대 기간 (기본값 7일)
+   - retetion.ms(minutes, hours) : 세그먼트를 보유할 최대 기간 (기본값 7일)
    - retention.bytes : 파티션 당 로그 적재 바이트 값 (기본값 -1 (지정하지 않음))
    - log.retention.check.interval.ms : 세그먼트가 삭제 영역에 들어왔는지 확인하는 간격 (기본값 5분)
    
