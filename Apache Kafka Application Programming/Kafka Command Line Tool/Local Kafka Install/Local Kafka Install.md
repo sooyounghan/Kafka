@@ -73,12 +73,14 @@ set OS_ARCH=64-bit
    - 카프카 정상 실행 여부 확인
       +  bin/kakfa-broker-api-versions.sh라는 쉘 스크립트를 사용하면 로컬 호스트에 띄워져 있는 카프카 브로커에 대해 정상적으로 띄워졌는지 통신을 통해 각종 옵션에 대한 정보 조회 가능
       +  명령어 : ```./bin/windows/kafka-broker-api-versions.bat --bootstrap-server localhost:9092```
+      +  명령어 : ```./bin/windows/kafka-topics.bat --bootstrap-server localhost:9092 --list```
 <div align="center">
 <img src="https://github.com/user-attachments/assets/6cdc69d1-2829-4b64-b659-e2df8b1deb76" />
 </div>
 
    - 테스트 편의를 위한 hosts 설정
-      +  명령어 : ```./bin/windows/kafka-topics.bat --bootstrap-server localhost:9092 --list```
+     + 명령어 : ```notepad C:\Windows\System32\drivers\etc\hosts```
+     + 파일 맨 아래에 ```127.0.0.1    my-kafka``` 입
 <div align="center">
 <img src="https://github.com/user-attachments/assets/0e9e85de-9070-413d-b47d-c12c20a84f90" />
 </div>
