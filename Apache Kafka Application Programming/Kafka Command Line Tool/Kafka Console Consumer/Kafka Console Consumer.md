@@ -16,7 +16,7 @@
    - 만약, 레코드의 메세지 키와 메세지 값을 확인하고 싶다면 --property 옵션을 사용하면 됨
    - 명령어
 ```
-./bin/windows/kafka-console.consumer.bat --bootstrap-server my-kafka:9092 --topic hello.kafka --property print.key=true --property key.separator="-' --from-beginning
+./bin/windows/kafka-console.consumer.bat --bootstrap-server my-kafka:9092 --topic hello.kafka --property print.key=true --property key.separator="-" --from-beginning
 ```
 <div align="center">
 <img src="https://github.com/user-attachments/assets/2ef813f8-efcb-44ca-8ecf-42cc6dda52fd" />
