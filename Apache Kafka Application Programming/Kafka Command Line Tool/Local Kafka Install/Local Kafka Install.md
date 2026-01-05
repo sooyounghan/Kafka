@@ -21,6 +21,8 @@
 <img src="https://github.com/user-attachments/assets/02ad556b-b176-4418-ac75-b48343b1a904" />
 </div>
 
+   - 카프카 바이너리 실행
+     
    - server.properties
      + log.dirs : 파일 시스템을 지정하는 부분 (프로듀서가 데이터를 보내게 되면, 프로듀서에 있는 데이터는 카프카 브로커로 가게 되고, 카프카 브로커에 있는 데이터는 파일 시스템에 저장)
      + log.dirs=C:/kafka_2.12-2.5.0/data로 변경 (C:/kafka_2.12-2.5.0 내 data 디렉토리 생성)
@@ -79,11 +81,9 @@ set OS_ARCH=64-bit
 </div>
 
    - 테스트 편의를 위한 hosts 설정
-     + 명령어 : ```notepad C:\Windows\System32\drivers\etc\hosts```
-     + 파일 맨 아래에 ```127.0.0.1    my-kafka``` 입
+     + 명령어 : ```notepad C:\Windows\System32\drivers\etc\hosts``` (메모장 관리자 권한으로 실행 필요)
+     + 파일 맨 아래에 ```127.0.0.1    my-kafka``` 입력
 <div align="center">
 <img src="https://github.com/user-attachments/assets/0e9e85de-9070-413d-b47d-c12c20a84f90" />
 </div>
-
-   - 카프카 바이너리 실행
 
