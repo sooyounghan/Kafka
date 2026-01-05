@@ -32,7 +32,7 @@
    - 주키퍼 실행
      + 상용 환경에서는 앙상블로 따로 설치하여 진행되는게 일반적임 : 주키퍼에서는 내부적으로 어떤 투표 과정을 거쳐 가장 알맞은 데이터를 고르는 과정이 존재
      + 로컬에서 테스트하는 환경에서는 로컬에 한 대만 띄워서도 활용할 수 있도록 카프카 바이너리에도 포함되어 있으므로, 카프카 브로커를 실행하기 전 다음과 같이 설정 값을 통해 주키퍼를 실행
-     + 윈도우 환경 : 윈도우 터미널 실행 - 파워 쉘 실행 (주키퍼 실행 명령어 : .\bin\windows\zookeeper-server-start.bat config\zookeeper.properties)
+     + 윈도우 환경 : 윈도우 터미널 실행 - 파워 쉘 실행 (주키퍼 실행 명령어 : ```.\bin\windows\zookeeper-server-start.bat config\zookeeper.properties```)
 <div align="center">
 <img src="https://github.com/user-attachments/assets/a025e656-0d03-4830-9a84-dbc12a0f7f2e" />
 </div>
@@ -40,7 +40,7 @@
    - 카프카 브로커 실행 : kafka-server-start.sh와 함께 config/server.properties하는 파일의 내용을 참조받아서 사용
      + 이 파일의 내용을 바탕으로 카프카 서버, 즉 카프카 서버는 브로커 임을 알 수 있음
      + started라는 로그가 나오게 되면, 카프카 브로커를 정상적으로 실행시켰음을 확인 가능
-     + 카프카 실행 명령어 : .\bin\windows\kafka-server-start.bat ./config\server.properties
+     + 카프카 실행 명령어 : ```.\bin\windows\kafka-server-start.bat ./config\server.properties```
        * 수정 사항 : \bin\windows\kafka-server-start.bat 내용 변경 (아래 내용 삭제 후, 내용 삽입)
 ```bat
 IF ["%KAFKA_HEAP_OPTS%"] EQU [""] (
@@ -72,11 +72,13 @@ set OS_ARCH=64-bit
 
    - 카프카 정상 실행 여부 확인
       +  bin/kakfa-broker-api-versions.sh라는 쉘 스크립트를 사용하면 로컬 호스트에 띄워져 있는 카프카 브로커에 대해 정상적으로 띄워졌는지 통신을 통해 각종 옵션에 대한 정보 조회 가능
+      +  명령어 : ```./bin/windows/kafka-broker-api-versions.bat --bootstrap-server localhost:9092```
 <div align="center">
 <img src="https://github.com/user-attachments/assets/6cdc69d1-2829-4b64-b659-e2df8b1deb76" />
 </div>
 
    - 테스트 편의를 위한 hosts 설정
+      +  명령어 : ```./bin/windows/kafka-topics.bat --bootstrap-server localhost:9092 --list```
 <div align="center">
 <img src="https://github.com/user-attachments/assets/0e9e85de-9070-413d-b47d-c12c20a84f90" />
 </div>
