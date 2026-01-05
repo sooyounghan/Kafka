@@ -42,9 +42,38 @@
    - --group 옵션을 사용하면 컨슈머 그룹을 기반으로 kafka-console-consumer가 동작
      + 컨슈머 그룹 : 특정 목적을 가진 컨슈머들을 묶음으로 사용하는 것을 뜻함
      + 컨슈머 그룹으로 토픽의 레코드를 가져갈 경우, 어느 레코드까지 읽었는지에 대한 데이터가 카프카 브로커에 저장
-```
-./bin/windows/kafka-console-consumer.bat --bootstrap-server my-kafka:9092 --topic hello.kafka --group hello-group --from-beginning
-```
 <div align="center">
 <img src="https://github.com/user-attachments/assets/a13292c6-a066-4836-9820-ac1367b1b529" />
 </div>
+
+```
+./bin/windows/kafka-console-consumer.bat --bootstrap-server my-kafka:9092 --topic hello.kafka --group hello-group --from-beginning
+```
+```
+PS C:\kafka_2.12-2.5.0> ./bin/windows/kafka-console-consumer.bat --bootstrap-server my-kafka:9092 --topic hello.kafka --group hello-group --from-beginning
+hello
+kafka
+0
+1
+2
+3
+4
+5
+6
+mymessagevalue
+new
+hi
+no3
+```
+   - hello-group라는 컨슈머 그룹은 메세지 값이 no3까지 확실하게 읽었음 (커밋을 수행했음 - __consumer_offeset에 저장) 의미
+```
+./bin/windows/kafka-topics.bat --bootstrap-server my-kafka:9092 --list
+```
+```
+PS C:\kafka_2.12-2.5.0> ./bin/windows/kafka-topics.bat --bootstrap-server my-kafka:9092 --list
+__consumer_offsets
+hello.kafka
+hello.kafka2
+test
+```
+   - 즉, 기존 Kafka Topic 외에 __consumer_offset이라고 하는 새로운 토픽 생성 : 즉, 컨슈머 그룹을 사용하면 이 컨슈머 그룹이 어느 레코드까지 읽었는지에 대한 커밋 데이터를 저장
