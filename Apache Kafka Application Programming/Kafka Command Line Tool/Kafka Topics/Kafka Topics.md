@@ -18,6 +18,7 @@
    - 명령어
 ```
 ./bin/windows/kafka-topics.bat --create --bootstrap-server my-kafka:9092 --partitions 10 --replication-factor 1 --topic hello.kafka2 --config retention.ms=172800000
+./bin/windows/kafka-topics.bat --bootstrap-server my-kafka:9092 --describe
 ./bin/windows/kafka-topics.bat --bootstrap-server my-kafka:9092 --topic hello.kafka2 --describe
 ```
 <div align="center">
