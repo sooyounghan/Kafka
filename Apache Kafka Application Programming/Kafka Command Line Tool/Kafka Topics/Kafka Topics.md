@@ -15,8 +15,11 @@
 
 3. 파티션 개수, 복제 개수, 토픽 데이터 유지 기간 옵션들을 지정하여 토픽을 생성하고 싶다면, 다음과 같이 명령을 실행
    - 생성된 토픽들의 이름을 조회하려면 --list 옵션 사용
-   - 명령어 : ```./bin/windows/kafka-topics.bat --create --bootstrap-server my-kafka:9092 --partition 10 --replication-factor 1 --topic hello.kafka2 --config retention.ms=172800000```
-   - 명령어 : ```./bin/windows/kafka-topics.bat --create --bootstrap-server my-kafka:9092 --list```
+   - 명령어
+```
+./bin/windows/kafka-topics.bat --create --bootstrap-server my-kafka:9092 --partitions 10 --replication-factor 1 --topic hello.kafka2 --config retention.ms=172800000
+./bin/windows/kafka-topics.bat --bootstrap-server my-kafka:9092 --topic hello.kafka2 --describe
+```
 <div align="center">
 <img src="https://github.com/user-attachments/assets/5d0a99a5-d57c-40bd-9652-b9da1404b5a3" />
 </div>
@@ -24,9 +27,9 @@
 4. 파티션 개수를 늘리기 위해 --alter 옵션을 사용
     - 명령어
  ```
-./bin/windows/kafka-topics.bat --create --boostrap-server my-kafka:9092 --topic test
-./bin/windows/kafka-topics.bat --bootstrap-server my-kafka:9092 --topic test --describe```
-./bin/windows/kafka-topics.bat --boostrap-server my-kafka:9092 --topic test --alter --partitions 4
+./bin/windows/kafka-topics.bat --create --bootstrap-server my-kafka:9092 --topic test
+./bin/windows/kafka-topics.bat --bootstrap-server my-kafka:9092 --topic test --describe
+./bin/windows/kafka-topics.bat --bootstrap-server my-kafka:9092 --topic test --alter --partitions 10
 ./bin/windows/kafka-topics.bat --bootstrap-server my-kafka:9092 --topic test --describe
 ```
 <div align="center">
