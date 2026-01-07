@@ -4,7 +4,7 @@
 1. 카프카 프로듀서로 퍼포먼스를 측정할 때 사용
 2. 명령어
 ```
-./bin/windows/kafka-producer-perf-test.bat --producer-props bootstrap.servers=my-kakfa:9092 --topic hello.kafka --num-records 10 --throughput 1 --record-size 100 --print-metric
+.\bin\windows\kafka-producer-perf-test.bat --producer-props bootstrap.servers=localhost:9092 --topic hello.kafka --num-records 10 --throughput 1 --record-size 100 --print-metric
 ```
 <div align="center">
 <img width="1444" height="540" alt="image" src="https://github.com/user-attachments/assets/810598fd-75f8-4ae4-974c-4206dc4208aa" />
@@ -17,7 +17,7 @@
 2. 카프카 브로커와 컨슈머(해당 스크립트를 돌리는 호스트) 간의 네트워크를 체크할 때 사용 가능
 3. 명령어
 ```
-./bin/windows/kafka-consumer-perf-test.bat --bootstrap.server my-kakfa:9092 --topic hello.kafka --messages 10 --throughput 1 --record-size 100 --show-detailed-stats
+./bin/windows/kafka-consumer-perf-test.bat --bootstrap-server localhost:9092 --topic hello.kafka --messages 10 --show-detailed-stats
 ```
 <div align="center">
 <img width="1404" height="452" alt="image" src="https://github.com/user-attachments/assets/04eac01e-f02d-450c-9861-b0a6212a7de9" />
