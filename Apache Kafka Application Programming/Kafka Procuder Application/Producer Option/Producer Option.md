@@ -12,7 +12,7 @@
      + 0, 1, -1(all) 중 하나로 설정할 수 있음
      + 기본값은 1
    - linger.ms : 배치를 전송하기 전까지 기다리는 최소 시간 (기본값은 0)
-   - retires : 브로커로부터 에러를 받고 난 뒤 재전송을 시도하는 횟수 지정 (기본값은 2147483647)
+   - retries : 브로커로부터 에러를 받고 난 뒤 재전송을 시도하는 횟수 지정 (기본값은 2147483647)
    - max.in.flight.requests.per.connection : 한 번에 요청하는 최대 커넥션 개수로, 설정된 값 만큼 동시에 전달 요청 수행 (기본값은 5)
    - partitioner.class : 레코드를 파티션에 전송할 때 적용하는 파티셔너 클래스를 지정 (기본값은 org.apache.kafka.clients.producer.internals.DefaultPartitioner)
    - enable.idempotence : 멱등성 프로듀서로 동작할지 여부 설정 (기본값은 false)
