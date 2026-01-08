@@ -31,7 +31,7 @@ public class CustomPartitioner implements Partitioner { // Partitioner 인터페
         if (((String)key).equals("Pangyo")) // Pangyo라는 메세지 키를 가질 때
             return 0; // 0번 파티션으로 지정
 
-        // Pangyou가 아닌 값에 대해서는 해시값 처리
+        // Pangyo가 아닌 값에 대해서는 해시값 처리
         List<PartitionInfo> partitions = cluster.partitionsForTopic(topic);
         int numPartitions = partitions.size();
         return Utils.toPositive(Utils.murmur2(keyBytes)) % numPartitions;
