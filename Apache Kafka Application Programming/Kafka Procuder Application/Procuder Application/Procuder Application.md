@@ -39,8 +39,6 @@ public class SimpleProducer {
 
         KafkaProducer<String, String> producer = new KafkaProducer<>(configs); // 프로듀서 Instance 생성 (Message Key와 Message Value를 직렬화하여 전송)
 
-        ...
-
         String messageValue = "testMessage";
         ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, messageValue); // ProducerRecord 생성 (토픽 이름과, MessageValue 값을 받음)
         producer.send(record); // record 인스턴스를 통해 레코드가 브로커로 전송 (Accumulator가 배치로 모아 한 번에 전송)
