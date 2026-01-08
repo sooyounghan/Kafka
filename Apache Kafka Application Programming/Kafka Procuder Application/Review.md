@@ -30,4 +30,4 @@
 5. min.insync.replicas=3, 복제 개수가 2일 때 가장 신뢰도 높게 데이터를 전송할 수 있음 (X)
    - min.insync.replicas=3 : 리더 파티션 1개, 팔로워 파티션 2개
    - 복제 개수가 2개 이므로, 전제 조건이 틀림
-   - acks=all, min.insync.replicas=2, replicas factor = 3로 하는 것이 가장 신뢰도 높게 데이터 전송 가능
+   - acks=all, min.insync.replicas=2, Replication Factor=3로 하는 것이 가장 신뢰도 높게 데이터 전송 가능
