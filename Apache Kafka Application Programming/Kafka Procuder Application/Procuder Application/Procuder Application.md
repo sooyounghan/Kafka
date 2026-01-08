@@ -18,8 +18,8 @@ group 'com.example'
 version '1.0'
 repositories { mavenCentral() }
 dependencies {
-    compile 'org.apache.kafka:kafka-clients:2.5.0'
-    compile 'org.slf4j:slf4j-simple:1.7.30'
+    implementation  'org.apache.kafka:kafka-clients:2.5.0'
+    implementation  'org.slf4j:slf4j-simple:1.7.30'
 }
 ```
 
@@ -27,26 +27,26 @@ dependencies {
 ```java
 public class SimpleProducer {
     private final static Logger logger = LoggerFactory.getLogger(SimpleProducer.class);
-    private final static String TOPIC_NAME = "test";
-    private final static String BOOTSTRAP_SERVERS = "my-kafka:9092";
+    private final static String TOPIC_NAME = "test"; // 토픽 이름 설정
+    private final static String BOOTSTRAP_SERVERS = "my-kafka:9092"; // 부트스트랩 서버 설정
 
     public static void main(String[] args) {
-        Properties configs = new Properties();
+        Properties configs = new Properties(); // Properties 지정
 
-        configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
-        configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS); // BootStrap 서버 설정
+        configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,  StringSerializer.class.getName()); // KeySerializer 설정
+        configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName()); // ValueSerializer 설정
 
-        KafkaProducer<String, String> producer = new KafkaProducer<>(configs);
+        KafkaProducer<String, String> producer = new KafkaProducer<>(configs); // 프로듀서 Instance 생성 (Message Key와 Message Value를 직렬화하여 전송)
 
         ...
 
         String messageValue = "testMessage";
-        ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, messageValue);
-        producer.send(record);
+        ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, messageValue); // ProducerRecord 생성 (토픽 이름과, MessageValue 값을 받음)
+        producer.send(record); // record 인스턴스를 통해 레코드가 브로커로 전송 (Accumulator가 배치로 모아 한 번에 전송)
         logger.info("{}", record);
-        producer.flush();
-        producer.close();
+        producer.flush(); // 강제로 브로커로 전송
+        producer.close(); // 자원 정리
     }
 }
 ```
