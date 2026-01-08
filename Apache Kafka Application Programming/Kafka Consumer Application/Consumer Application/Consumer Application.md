@@ -72,3 +72,13 @@ public class SimpleConsumer {
     }
 }
 ```
+```
+PS C:\kafka_2.12-2.5.0> ./bin/windows/kafka-console-producer.bat --bootstrap-server my-kafka:9092 --topic test
+>hello
+>kafka
+```
+```
+[main] INFO com.example.SimpleConsumer - record:ConsumerRecord(topic = test, partition = 0, leaderEpoch = 0, offset = 0, CreateTime = 1767861334790, serialized key size = -1, serialized value size = 5, headers = RecordHeaders(headers = [], isReadOnly = false), key = null, value = hello)
+[main] INFO com.example.SimpleConsumer - record:ConsumerRecord(topic = test, partition = 3, leaderEpoch = 0, offset = 1, CreateTime = 1767861359437, serialized key size = -1, serialized value size = 5, headers = RecordHeaders(headers = [], isReadOnly = false), key = null, value = kafka)
+```
+
