@@ -1,7 +1,7 @@
 -----
 ### 정리
 -----
-1. 프로듀서는 데이터를 카프카 클러스토로 보냄
+1. 프로듀서는 데이터를 카프카 클러스터로 보냄
 2. 프로듀서는 Partitioner, Accumulator, Sender를 지나 카프카 클러스터로 데이터가 보내짐
 3. 프로듀서의 기본 파티셔너는 UniformStickyPartitioner와 RoundRobinPartitioner가 있음
    - 메세지 키가 있을 경우 UniformStickyPartitioner와 RoundRobinPartitioner의 동작은 동일
