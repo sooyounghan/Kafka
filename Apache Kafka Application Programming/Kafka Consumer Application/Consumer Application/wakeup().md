@@ -32,7 +32,7 @@ public class ConsumerWithSyncOffsetCommitShutdownHook {
     private static KafkaConsumer<String, String> consumer;
 
     public static void main(String[] args) {
-        Runtime.getRuntime().addShutdownHook(new ShutdownThread());
+        Runtime.getRuntime().addShutdownHook(new ShutdownThread()); // Runtime에 Shutdown Hook을 추가 : 자바 애플리케이션에 명시적으로 Shutdown Hook을 처리 가능 - wakeup() 메서드를 통해 안전하게 데이터를, 즉 컨슈머 애플리케이션 종료 가
 
         Properties configs = new Properties();
         configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
