@@ -78,7 +78,10 @@
 2. 컨슈머 랙을 모니터링을 위해 사용할 수 있는 저장소와 대시보드는 다양하지만 빠르게, 무료로 설치할 수 있는 아키텍쳐를 제안
    - 버로우 : ```github.com/linkedin/Burrow```
    - 텔레그래프 : ```github.com/influxdata/telegraf```
+     + REST API를 지속적으로 계속 호출하여 엘라스틱서치에 JSON 형태로 데이터를 저장
    - 엘라스틱서치 : ```www.elastic.co/kr```
+     + 텔레그래프를 사용해 엘라스틱서치에 데이터 수집
    - 그라파나 : ```grafana.com```
+     + 엘라스틱서치에 시간 순서로 데이터를 넣을 때, 시각화 하는 도구로 활용
    - 설치 방법 : ```blog.voidmainvoid.net/279```
   
