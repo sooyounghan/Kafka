@@ -15,17 +15,17 @@
 -----
 1. 프로듀서가 보내는 데이터의 중복 적재를 막기 위해 0.11.0 이후 버전부터는 프로듀서에 eanble.idempotence 옵션을 사용해 정확히 한 번 전달(Exactly Once Delivery)을 지원
    - 기본값은 false이며, 정확히 한 번 전달을 위해서는 true로 옵션값을 설정해 멱등성 프로듀서로 동작하도록 만들면 됨
-
-2. 카프카 3.0.0 부터는 enable.idempotence 옵션값의 기본값을 true(acks=all)로 변경되므로 신규 버전에서 프로듀서의 동작에 유의해서 사용하도록 해야함
 ```java
 Properties configs = new Properties();
 configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
 configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-configs.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
+configs.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true); // 2.5.0 버전은 기본값이 false이므로 true로 변경
 
 KafkaProducer<String, String> producer = new KafkaProducer<>(configs);
 ```
+
+2. 카프카 3.0.0 부터는 enable.idempotence 옵션값의 기본값을 true(acks=all)로 변경되므로 신규 버전에서 프로듀서의 동작에 유의해서 사용하도록 해야함
 
 3. 동작
    - 멱등성 프로듀서는 기본 프로듀서와 달리 데이터를 브로커로 전달할 때 프로듀서 PID(Producer Unique ID)와 시퀀스 넘버(Sequence Number)를 함께 전달
