@@ -27,7 +27,7 @@ public class ConsumerWithExactPartition {
         configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(configs); 
-        consumer.assign(Collections.singleton(new TopicPartition(TOPIC_NAME, PARTITION_NUMBER))); // 토픽에 대해 파티션을 각각 할당해 해당 파티션만 데이터를 처리하도록 진행 : assgin() 메서드 활용 (토픽 파티션에 대한 정보를 한 개 이상 추가)
+        consumer.assign(Collections.singleton(new TopicPartition(TOPIC_NAME, PARTITION_NUMBER))); // 토픽에 대해 파티션을 각각 할당해 해당 파티션만 데이터를 처리하도록 진행 : assgign() 메서드 활용 (토픽 파티션에 대한 정보를 한 개 이상 추가)
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(1));
             for (ConsumerRecord<String, String> record : records) {
