@@ -68,3 +68,19 @@ public class ConsumerWithSyncOffsetCommitShutdownHook {
     }
 }
 ```
+   
+   - Linux
+```
+ps -ef | grep ConsumerWithSyncOffsetCommitShutdownHook
+```
+```
+kill -term PID
+```
+   - Powershell
+```
+Get-CimInstance Win32_Process |
+  Where-Object { $_.CommandLine -like "*ConsumerWithSyncOffsetCommitShutdownHook*" } |
+```
+```
+Stop-Process -Id PID
+```
