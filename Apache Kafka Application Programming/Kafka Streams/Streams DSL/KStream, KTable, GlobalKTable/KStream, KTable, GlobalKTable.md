@@ -1,5 +1,5 @@
 ------
-### KStrean
+### KStream
 ------
 <div align="center">
 <img src="https://github.com/user-attachments/assets/ca58f4ff-bb91-4b09-ab99-f1a9443acd08" />
