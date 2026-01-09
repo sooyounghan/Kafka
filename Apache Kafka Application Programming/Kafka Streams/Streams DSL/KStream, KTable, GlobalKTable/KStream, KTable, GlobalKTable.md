@@ -51,3 +51,6 @@
 1. 코파티셔닝되지 않은 KStream와 KTable을 조인해서 사용하고 싶다면, KTable을 GlobalKTable로 선언하여 사용하면 됨
 2. GlobalKTable은 코파티셔닝 되지 않은 KStream과 데이터 조인을 할 수 있음
    - KTable과 다르게 GlobalKTable로 정의된 데이터는 스트림즈 애플리케이션의 모든 태스크에 동일하게 공유되어 사용되기 떄문임
+3. GlobalKTable의 데이터 양이 적을 경우에만 활용하는 것이 좋음
+4. KTable은 각 파티션이 태스크에 할당되어 운영되는 것이며, GlobalKTable은 파티션에 있는 모든 데이터가 각 태스크에서 Materialized View, 즉 구체화된 뷰로 사용
+   - 따라서, 큰 용량의 데이터는 GlobalKTable에서 활용하는 것은 부담이 되며, 일반적으로 코파티셔닝된 KTable이나 KStream을 활용하는 경우가 대부분
