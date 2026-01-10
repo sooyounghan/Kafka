@@ -62,11 +62,11 @@ public class KStreamCountApplication {
         StreamsBuilder builder = new StreamsBuilder();
         KStream<String, String> stream = builder.stream(TEST_LOG);
 
-        KTable<Windowed<String>, Long> countTable = stream.groupByKey()
-                .windowedBy(TimeWindows.of(Duration.ofSeconds(5)))
-                .count();
+        KTable<Windowed<String>, Long> countTable = stream.groupByKey() 
+                .windowedBy(TimeWindows.of(Duration.ofSeconds(5))) // 텀블링 윈도우 사이즈 (5초)
+                .count(); // count
         countTable.toStream().foreach(((key, value) -> {
-            log.info(key.key() + " is [" + key.window().startTime() + "~" + key.window().endTime() + "] count : " + value);
+            log.info(key.key() + " is [" + key.window().startTime() + "~" + key.window().endTime() + "] count : " + value); // 5초마다 들어온 데이터 개수 출력
         }));
 
         KafkaStreams streams = new KafkaStreams(builder.build(), props);
@@ -96,7 +96,10 @@ public class KStreamCountApplication {
 <img src="https://github.com/user-attachments/assets/d4d9433c-b246-47b8-98aa-fcf0cb663f28" />
 </div>
 
-: 호핑 윈도우와 유사하지만 데이터의 정확한 시간을 바탕으로 윈도우 사이즈에 포함되는 데이터를 모두 연산에 포함시키는 특징이 있음
+1. 호핑 윈도우와 유사하지만 데이터의 정확한 시간을 바탕으로 윈도우 사이즈에 포함되는 데이터를 모두 연산에 포함시키는 특징이 있음
+2. 시간의 의미
+   - 시스템 시간 : 특정 시간, 즉 서버거 돌아가는 시간 (레코드에 포함된 타임스탬프의 정확한 시간)
+   - 각 레코드 시간 
 
 -----
 ### 세션 윈도우
