@@ -121,4 +121,29 @@ public class StreamsFilter {
     }
 }
 ```
+   - topic 생성
+```
+./bin/windows/kafka-topics.bat --bootstrap-server my-kafka:9092 --topic stream_log --create
+
+./bin/windows/kafka-topics.bat --bootstrap-server my-kafka:9092 --topic stream_log_filter --create
+```
+
+   - filter 확인
+```
+./bin/windows/kafka-console-producer.bat --bootstrap-server my-kafka:9092 --topic stream_log
+
+./bin/windows/kafka-console-consumer.bat --bootstrap-server my-kafka:9092 --topic stream_log_filter
+```
+```
+PS C:\kafka_2.12-2.5.0> ./bin/windows/kafka-console-producer.bat --bootstrap-server my-kafka:9092 --topic stream_log
+>0
+>01
+>012
+>0123
+>01234
+>012345
+
+PS C:\kafka_2.12-2.5.0> ./bin/windows/kafka-console-consumer.bat --bootstrap-server my-kafka:9092 --topic stream_log_filter
+012345
+```
 
