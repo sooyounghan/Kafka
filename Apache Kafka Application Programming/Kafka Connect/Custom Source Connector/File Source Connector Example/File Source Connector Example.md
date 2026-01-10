@@ -39,13 +39,13 @@ import org.apache.kafka.common.config.ConfigDef.Type;
 
 import java.util.Map;
 
-public class SingleFileSourceConnectorConfig extends AbstractConfig {
+public class SingleFileSourceConnectorConfig extends AbstractConfig { // 템플릿 형태
 
-    public static final String DIR_FILE_NAME = "file";
-    private static final String DIR_FILE_NAME_DEFAULT_VALUE = "/tmp/kafka.txt";
-    private static final String DIR_FILE_NAME_DOC = "읽을 파일 경로와 이름";
+    public static final String DIR_FILE_NAME = "file"; // 파일 (어떤 파일을 읽을 것인가?)
+    private static final String DIR_FILE_NAME_DEFAULT_VALUE = "/tmp/kafka.txt"; // DEFAULT_VALUE
+    private static final String DIR_FILE_NAME_DOC = "읽을 파일 경로와 이름"; // 정보
 
-    public static final String TOPIC_NAME = "topic";
+    public static final String TOPIC_NAME = "topic"; // 토픽 (어떤 토픽에 넣을 것인가?)
     private static final String TOPIC_DEFAULT_VALUE = "test";
     private static final String TOPIC_DOC = "보낼 토픽명";
 
@@ -83,7 +83,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SingleFileSourceConnector extends SourceConnector {
+public class SingleFileSourceConnector extends SourceConnector { // SourceConnector 상속 (하나의 파일을 읽어서 토픽에 전송)
 
     private final Logger logger = LoggerFactory.getLogger(SingleFileSourceConnector.class);
 
@@ -95,7 +95,7 @@ public class SingleFileSourceConnector extends SourceConnector {
     }
 
     @Override
-    public void start(Map<String, String> props) {
+    public void start(Map<String, String> props) { // REST API로 템플릿 형태 (FILE, TOPIC)
         this.configProperties = props;
         try {
             new SingleFileSourceConnectorConfig(props);
@@ -105,12 +105,12 @@ public class SingleFileSourceConnector extends SourceConnector {
     }
 
     @Override
-    public Class<? extends Task> taskClass() {
-        return SingleFileSourceTask.class;
+    public Class<? extends Task> taskClass() { // 실행할 TaskClass 지정
+        return SingleFileSourceTask.class; // 여러 개라면, 상황에 따라 지정하면 됨
     }
 
     @Override
-    public List<Map<String, String>> taskConfigs(int maxTasks) {
+    public List<Map<String, String>> taskConfigs(int maxTasks) { // TASK에 어떤 Config를 넣을지 지정
         List<Map<String, String>> taskConfigs = new ArrayList<>();
         Map<String, String> taskProps = new HashMap<>();
         taskProps.putAll(configProperties);
@@ -170,23 +170,23 @@ public class SingleFileSourceTask extends SourceTask {
     }
 
     @Override
-    public void start(Map<String, String> props) {
+    public void start(Map<String, String> props) { // 리소스 초기화 용도
         try {
             // Init variables
             SingleFileSourceConnectorConfig config = new SingleFileSourceConnectorConfig(props);
             topic = config.getString(SingleFileSourceConnectorConfig.TOPIC_NAME);
             file = config.getString(SingleFileSourceConnectorConfig.DIR_FILE_NAME);
             fileNamePartition = Collections.singletonMap(FILENAME_FIELD, file);
-            offset = context.offsetStorageReader().offset(fileNamePartition); // 소스 커넥터에서 관리하는 내부 번호를 기록하는 용도
+            offset = context.offsetStorageReader().offset(fileNamePartition); // 소스 커넥터에서 관리하는 내부 번호를 기록하는 용도 (소스 태스크 내부에서 관리하는 offset)
 
             // Get file offset from offsetStorageReader
-            if (offset != null) {
+            if (offset != null) { // 오프셋이 없을 경우 
                 Object lastReadFileOffset = offset.get(POSITION_FIELD);
                 if (lastReadFileOffset != null) {
                     position = (Long) lastReadFileOffset; // 만약 기존에 저장된 내부 번호가 있다면 해당 번호부터 시작
                 }
             } else { // 만약 기존에 저장된 내부 번호가 없다면 0부터 시작
-                position = 0;
+                position = 0; // 최초 0부터 시작작
             }
 
         } catch (Exception e) {
@@ -195,7 +195,7 @@ public class SingleFileSourceTask extends SourceTask {
     }
 
     @Override
-    public List<SourceRecord> poll() {
+    public List<SourceRecord> poll() { // 데이터 처리 (List<SoruceRecord>는 send()를 통해 토픽에 전송)
         List<SourceRecord> results = new ArrayList<>();
         try {
             Thread.sleep(1000);
