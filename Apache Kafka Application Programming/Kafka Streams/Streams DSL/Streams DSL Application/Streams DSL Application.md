@@ -108,11 +108,11 @@ public class StreamsFilter {
 
         StreamsBuilder builder = new StreamsBuilder();
 
-        KStream<String, String> streamLog = builder.stream(STREAM_LOG);
+        KStream<String, String> streamLog = builder.stream(STREAM_LOG); // 소스 프로세서로 데이터를 가져옴 (stream() 메서드를 통해 KStream으로 데이터를 가져옴) - STREAM_LOG라는 토픽을 각 레코드에 대해 스트림 처리하기 위해 streamLog라는 인스턴스 생성
 
         KStream<String, String> filteredStream = streamLog
-                                                  .filter((key, value) -> value.length() > 5);
-        filteredStream.to(STREAM_LOG_FILTER);
+                                                  .filter((key, value) -> value.length() > 5); // 메세지 값이 길이가 5를 초과하는 경우만 필터링 (filter() : 스트림 프로세서)
+        filteredStream.to(STREAM_LOG_FILTER); // 필터링된 스트림을 기준으로 특정 토픽 데이터 저장 : to() 사용
         // streamLog.filter((key, value) -> value.length() > 5).to(STREAM_LOG_FILTER);
 
         KafkaStreams streams;
