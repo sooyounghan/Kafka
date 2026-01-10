@@ -27,7 +27,7 @@ import org.apache.kafka.common.config.ConfigDef.Type;
 
 import java.util.Map;
 
-public class SingleFileSinkConnectorConfig extends AbstractConfig {
+public class SingleFileSinkConnectorConfig extends AbstractConfig { // AbstractConfig에는 topics라고 하는 기본 설정 값을 받음 (하지만, 파이프라인을 실행할 때, SinkConnector를 실행할 때는 topics 지정 필요)
 
     public static final String DIR_FILE_NAME = "file";
     private static final String DIR_FILE_NAME_DEFAULT_VALUE = "/tmp/kafka.txt";
