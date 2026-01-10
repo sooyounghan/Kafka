@@ -6,5 +6,6 @@
 3. Accumualator : 레코드 전송 시 배치로 묶는 역할
 4. acks : 레코드를 카프카 클러스터로 전송 시 전달 신뢰성 지정
 5. min.insync.replicas : acks=all일 경우, 최소 적재 보장 파티션 개수
+   - 💡 acks=all(-1), Replication Factor=3, min.insync.replicas=2로 설정하는 것이 가장 안정적인 데이터 처리
 6. enable.idempotence : 멱등성 프로듀서로 동작하기 위해 설정하는 옵션
 7. transactional.id : 트랜잭션 프로듀서로 동작하기 위해 설정하는 옵션
